@@ -1,2 +1,2 @@
 # Dinner-Delights
-the Site is Live At:dinnerdelights.netlify.app
+The Site is Live At: https://dinnerdelights.netlify.app/
