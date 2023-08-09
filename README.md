@@ -5,4 +5,3 @@ The Site is Live At: https://dinnerdelights.netlify.app/
 
 
 
-![2023-08-10 (1)](https://github.com/UtkarshRawat1710/Dinner-Delights/assets/124810125/79dd3923-172a-4f23-b99c-81a9d84d42c3)
