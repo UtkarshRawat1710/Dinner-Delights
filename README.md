@@ -1,3 +1,4 @@
 # Dinner-Delights
 The Site is Live At: https://dinnerdelights.netlify.app/
-![WhatsApp Image 2023-08-10 at 01 17 56](https://github.com/UtkarshRawat1710/Dinner-Delights/assets/124810125/f3642a07-6914-4912-8056-ef4fbe4caf46)
+
+<img width="1392" alt="screenshot-saverecipestodatabase" src="https://github.com/UtkarshRawat1710/Dinner-Delights/assets/124810125/226cf3f7-f5ad-4a9e-96ab-66cc1f7ce7ba">
