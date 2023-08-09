@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" ></script>
+	<!-- Bootstrap theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<title>Dinner-Delights</title>
+    <link rel="stylesheet" href="./assets/css/index.css"/>
+	<link rel="icon" type="image/png" href="assets/images/img-cooking-icon.png">
+</head>
+<body>
+
+<div class="navbar navbar-default">
+<div class="navbar-header">
+  <a class="navbar-brand" href="https://www.shinerweb.com">Welcome to the Dinner-Delight App</a>
+  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-controls="navbar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+  </button>
+</div>
+<div class="navbar-collapse collapse"  >
+    <ul class="nav navbar-nav navbar-right">
+         <li><a href="#" id="logout" style="display: none;">Log Out</a></li>
+    </ul>
+</div>
+</div>
+<br>
+<div class="container">	
+  <form name="registration_form" id="registration_form" method="post" action="#" enctype="multipart/form-data" autocomplete="off">
+  <div class="row">
+
+	<div class="col-sm-4">
+		<div class="form-group">
+	      <label for="email">Email</label>
+		  <input type="text" name="email" id="email" class="form-control" placeholder="Enter your email">
+		</div>
+		
+		<div class="form-group">
+	      <label for="password" >Password</label>
+		  <input type="password" name="password" id="password" class="form-control"  placeholder="Enter your password">
+		</div>
+		<button type="button" id="register" name="register" class="btn btn-success">Sign Up</button>
+        <br>
+               <p style="display: inline-block; margin-right: 20px;">Or Sign Up With :</p>
+ 
+
+               <img   id="google-login" src="./png-transparent-google-logo-google-search-meng-meng-company-text-logo-thumbnail.png" width="50" height="50" style="border-radius: 50%;" >
+    <!--
+
+
+ <i class="fab fa-facebook" style="font-size: 40px; margin-left: 20px; position: relative; top: -7px;"></i>>
+-->
+    
+ 
+	</div><!-- end col -->
+	</form>
+	<div class="col-sm-4">
+		
+	</div>
+	<form name="login_form" id="login_form" method="post" action="#" enctype="multipart/form-data" autocomplete="off" >
+	<div class="col-sm-4">
+		<div class="form-group">
+	      <label for="email">Email</label>
+		  <input type="text" name="login_email" id="login_email" class="form-control" placeholder="Enter your email">
+		</div>
+		
+		<div class="form-group">
+	      <label for="password">Password</label>
+		  <input type="password" name="login_password" id="login_password" class="form-control"  placeholder="Enter your password">
+		</div>
+		<button type="button" id="login" name="login" class="btn btn-success" style="margin-right: 20px;">Login</button>
+    <a href="forgetpassword.html" style="color: white;">
+Forgot PassWord?
+    </a>
+
+        
+	</div><!-- end col -->
+	
+  </div><!--  end row -->		
+  </form>
+</div>
+<br>
+
+</body>
+	<script type="module">
+	  // Import the functions you need from the SDKs you need
+	  // Import the functions you need from the SDKs you need
+	  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+	  import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
+	  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut,GoogleAuthProvider , signInWithPopup} from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+	  // TODO: Add SDKs for Firebase products that you want to use
+	  // https://firebase.google.com/docs/web/setup#available-libraries
+
+	  // Your web app's Firebase configuration
+	  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+	  const firebaseConfig = {
+  apiKey: "AIzaSyCvT2tSzq5EnJdeDka30q06REVjx3yo4EU",
+  authDomain: "what-s-for-dinner-1c1a8-c424d.firebaseapp.com",
+  databaseURL: "https://what-s-for-dinner-1c1a8-c424d-default-rtdb.firebaseio.com",
+  projectId: "what-s-for-dinner-1c1a8-c424d",
+  storageBucket: "what-s-for-dinner-1c1a8-c424d.appspot.com",
+  messagingSenderId: "353620269194",
+  appId: "1:353620269194:web:f4c6f9c4323776c052f573",
+  measurementId: "G-CLY8JTW3PK"
+};
+
+	  // Initialize Firebase
+	  const app = initializeApp(firebaseConfig);
+	  const analytics = getAnalytics(app);
+	  const auth = getAuth();
+	  console.log(app);
+
+	  
+
+	  //----- New Registration code start	  
+	  document.getElementById("register").addEventListener("click", function() {
+		  var email =  document.getElementById("email").value;
+		  var password = document.getElementById("password").value;
+		  //For new registration
+		  createUserWithEmailAndPassword(auth, email, password)
+		  .then((userCredential) => {
+		    // Signed in 
+		    const user = userCredential.user;
+		    console.log(user);
+		    alert("Registration successfully!!");
+		    // ...
+		  })
+		  .catch((error) => {
+		    const errorCode = error.code;
+		    const errorMessage = error.message;
+		    // ..
+		    console.log(errorMessage);
+		    alert(error);
+		  });		  		  
+	  });
+	  //----- End
+
+	  //----- Login code start	  
+	  document.getElementById("login").addEventListener("click", function() {
+		  var email =  document.getElementById("login_email").value;
+		  var password = document.getElementById("login_password").value;
+
+		  signInWithEmailAndPassword(auth, email, password)
+		  .then((userCredential) => {
+		    // Signed in 
+		    const user = userCredential.user;
+		    console.log(user);
+		    alert(user.email+" Login successfully!!!");
+			window.location.href = "./main.html";
+			const userEmail = user.email;
+
+// Save the user's email to session storage
+sessionStorage.setItem('userEmail', userEmail);
+
+		    // ...
+		  })
+		  .catch((error) => {
+		    const errorCode = error.code;
+		    const errorMessage = error.message;
+		    console.log(errorMessage);
+		    alert(errorMessage);
+		  });		  		  
+	  });
+	  //----- End
+
+	  //----- Logout code start	  
+	  document.getElementById("logout").addEventListener("click", function() {
+		  signOut(auth).then(() => {
+			  // Sign-out successful.
+			  console.log('Sign-out successful.');
+			  alert('Sign-out successful.');
+			  document.getElementById('logout').style.display = 'none';
+			}).catch((error) => {
+			  // An error happened.
+			  console.log('An error happened.');
+			});		  		  
+	  });
+	  //----- End
+	  
+	  //console.log(auth);
+
+	  const provider = new GoogleAuthProvider();
+	  console.log(provider);
+	  
+	  //----- Google login code start	  
+	  document.getElementById("google-login").addEventListener("click", function() {
+		  signInWithPopup(auth, provider)
+		  .then((result) => {
+		    // This gives you a Google Access Token. You can use it to access the Google API.
+		    const credential = GoogleAuthProvider.credentialFromResult(result);
+		    const token = credential.accessToken;
+		    // The signed-in user info.
+		    const user = result.user;
+		    alert("Welcome "+user.displayName);
+		    console.log(user);
+		    // ...
+		  }).catch((error) => {
+		    // Handle Errors here.
+		    const errorCode = error.code;
+		    const errorMessage = error.message;
+		    console.log(errorMessage);
+		    // The email of the user's account used.
+		    const email = error.customData.email;
+		    // The AuthCredential type that was used.
+		    const credential = GoogleAuthProvider.credentialFromError(error);
+		    // ...
+		  });		  		  
+	  });
+	  //----- End
+	  //----- End
+	</script>
+</html>
